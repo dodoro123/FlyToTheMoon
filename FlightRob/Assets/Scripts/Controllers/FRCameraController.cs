@@ -13,7 +13,7 @@ public class FRCameraController : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
 		//transform.position+=m_moveDir;
-		Follow(m_target.transform.position+new Vector3(0,0,-50));
+		Follow(m_target.transform.position+new Vector3(0,0,-25));
 	}
 	void Follow(Vector3 pos)
 	{

@@ -5,8 +5,6 @@ Project("{6B986526-AFAC-A958-F2F4-971F4E37C67D}") = "FlightRob", "Assembly-CShar
 EndProject
 Project("{6B986526-AFAC-A958-F2F4-971F4E37C67D}") = "FlightRob", "Assembly-CSharp-vs.csproj", "{6787C1A9-1B97-E41C-9FF3-48F61D83B4FD}"
 EndProject
-Project("{6B986526-AFAC-A958-F2F4-971F4E37C67D}") = "FlightRob", "Assembly-CSharp-Editor-vs.csproj", "{9CDF5520-D283-543A-C1A2-A7933C229250}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,15 +19,11 @@ Global
 		{6787C1A9-1B97-E41C-9FF3-48F61D83B4FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6787C1A9-1B97-E41C-9FF3-48F61D83B4FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6787C1A9-1B97-E41C-9FF3-48F61D83B4FD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9CDF5520-D283-543A-C1A2-A7933C229250}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9CDF5520-D283-543A-C1A2-A7933C229250}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9CDF5520-D283-543A-C1A2-A7933C229250}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9CDF5520-D283-543A-C1A2-A7933C229250}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																												GlobalSection(MonoDevelopProperties) = preSolution
+																																																	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

@@ -5,14 +5,21 @@ public class FRCharactorController : MonoBehaviour {
 	Camera camera;
 	FRCharactorBehaviour m_behaviour ;//= new FRCharactorBehaviour();
 	Vector3 m_desireVelocity;
-	float speedMultiplier = 0.3f;
-	float cruiseSpeed = 10;
+	float m_speedMultiplier = 0.3f;
+	public float m_enginePower = 5f;
+	public float m_gravity = 9.8f;
+	public float m_airFraction = 0.2f;
+	float m_cruiseSpeed =10f;
+	float m_flyPower =0.5f;
+	Vector3 m_velocity;
+
 	// Use this for initialization
 	void Start ()
 	{
 		//transform.localPosition = Vector3.zero;
 		camera = UnityEngine.Camera.allCameras[0];
 		m_behaviour = gameObject.GetComponent<FRCharactorBehaviour>();
+		m_velocity = m_cruiseSpeed*transform.forward;
 	}
 	
 	// Update is called once per frame
@@ -22,24 +29,29 @@ public class FRCharactorController : MonoBehaviour {
 		m_desireVelocity = Vector3.zero;
 		if(m_behaviour.IsForward())
 		{
-			m_desireVelocity +=cruiseSpeed*new Vector3(1,0,0);
+			m_desireVelocity +=m_cruiseSpeed*new Vector3(1,0,0);
 		}
 		if(m_behaviour.IsBackward())
 		{
-			m_desireVelocity += cruiseSpeed*new Vector3(-1,0,0);
+			m_desireVelocity += m_cruiseSpeed*new Vector3(-1,0,0);
 		}
 		if(m_behaviour.IsUp())
 		{
-			m_desireVelocity += cruiseSpeed*new Vector3(0,1,0);
+			transform.RotateAround(transform.right,0.1f);
+			//m_desireVelocity += cruiseSpeed*new Vector3(0,1,0);
 		}
 		if(m_behaviour.IsDown())
 		{
-			m_desireVelocity += cruiseSpeed*new Vector3(0,-1,0);
+			transform.RotateAround(transform.right,-0.1f);
+			//m_desireVelocity += cruiseSpeed*new Vector3(0,-1,0);
 		}
 
+		m_velocity+=(m_enginePower*transform.forward + m_cruiseSpeed*transform.forward*m_airFraction+m_cruiseSpeed*m_flyPower*transform.up+m_gravity*Vector3.down)*Time.deltaTime;
+
+		m_cruiseSpeed = Vector3.Dot(m_velocity,transform.forward);
 		if(!OutOfCamera(transform.position+m_desireVelocity*Time.deltaTime))
 		{
-			transform.position+=transform.forward*cruiseSpeed*Time.deltaTime;
+			transform.position+=m_velocity*Time.deltaTime;
 		}
 
 	}
