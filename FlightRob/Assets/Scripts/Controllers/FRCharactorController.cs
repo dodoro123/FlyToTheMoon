@@ -9,9 +9,11 @@ public class FRCharactorController : MonoBehaviour {
 	public float m_enginePower = 5f;
 	public float m_gravity = 9.8f;
 	public float m_airFraction = 0.2f;
-	float m_cruiseSpeed =10f;
+	public float m_airFraction2 = 2f;
+	float m_cruiseSpeed =5f;
 	float m_flyPower =0.5f;
 	Vector3 m_velocity;
+	Vector3 m_forwardVel;
 
 	// Use this for initialization
 	void Start ()
@@ -29,11 +31,11 @@ public class FRCharactorController : MonoBehaviour {
 		m_desireVelocity = Vector3.zero;
 		if(m_behaviour.IsForward())
 		{
-			m_desireVelocity +=m_cruiseSpeed*new Vector3(1,0,0);
+			m_enginePower=10f;
 		}
 		if(m_behaviour.IsBackward())
 		{
-			m_desireVelocity += m_cruiseSpeed*new Vector3(-1,0,0);
+			m_enginePower=2.5f;
 		}
 		if(m_behaviour.IsUp())
 		{
@@ -46,10 +48,11 @@ public class FRCharactorController : MonoBehaviour {
 			//m_desireVelocity += cruiseSpeed*new Vector3(0,-1,0);
 		}
 
-		m_velocity+=(m_enginePower*transform.forward + m_cruiseSpeed*transform.forward*m_airFraction+m_cruiseSpeed*m_flyPower*transform.up+m_gravity*Vector3.down)*Time.deltaTime;
+		m_velocity+=(m_enginePower*transform.forward - m_forwardVel*m_airFraction -(m_velocity-m_forwardVel)*m_airFraction2 +m_cruiseSpeed*m_flyPower*transform.up+m_gravity*Vector3.down)*Time.deltaTime;
 
 		m_cruiseSpeed = Vector3.Dot(m_velocity,transform.forward);
-		if(!OutOfCamera(transform.position+m_desireVelocity*Time.deltaTime))
+		m_forwardVel = transform.forward*m_cruiseSpeed;
+		//if(!OutOfCamera(transform.position+m_desireVelocity*Time.deltaTime))
 		{
 			transform.position+=m_velocity*Time.deltaTime;
 		}
