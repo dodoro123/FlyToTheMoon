@@ -8,7 +8,7 @@ public class FRCharactorController : MonoBehaviour {
 	float m_speedMultiplier = 0.3f;
 	public float m_enginePower = 5f;
 	public float m_gravity = 9.8f;
-	public float m_airFraction = 0.2f;
+	public float m_airFraction = 0.5f;
 	public float m_airFraction2 = 2f;
 	float m_cruiseSpeed =5f;
 	float m_flyPower =0.5f;
