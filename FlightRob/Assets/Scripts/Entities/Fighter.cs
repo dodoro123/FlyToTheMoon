@@ -4,9 +4,9 @@ using System.Collections;
 public class Fighter : Entity {
 
 
-	WeaponPlatform m_platform;
-	Weapon m_weapon;
-	FRCharactorBehaviour m_behaviour;
+	WeaponPlatform 			m_platform;
+	Weapon 					m_weapon;
+	FRCharactorBehaviour 	m_behaviour;
 	// Use this for initialization
 	void Start () 
 	{
