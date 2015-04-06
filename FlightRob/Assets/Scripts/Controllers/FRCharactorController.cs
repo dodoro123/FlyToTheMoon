@@ -12,7 +12,7 @@ public class FRCharactorController : MonoBehaviour {
 	public float m_airFraction2 = 2f;
 	float m_cruiseSpeed =5f;
 	float m_flyPower =0.5f;
-	Vector3 m_velocity;
+	public Vector3 m_velocity{get;private set;}
 	Vector3 m_forwardVel;
 
 	// Use this for initialization
