@@ -14,8 +14,16 @@ public class Weapon : Entity {
 	
 	}
 
+	public void SetupWeapon(Entity owner)
+	{
+		m_owner = owner;
+	}
+
 	public void Fire()
 	{
-		GameObject.Instantiate(Resources.Load("Entities/Bullet"),transform.position,Quaternion.identity);
+		Quaternion forward = Quaternion.LookRotation(transform.forward,Vector3.up);
+		GameObject bullet = (GameObject)GameObject.Instantiate(Resources.Load("Entities/Bullet"),transform.position+transform.forward,forward);
+		Bullet bulletCom = bullet.GetComponent<Bullet>();
+		bulletCom.InitVelocity((m_owner as Fighter).GetVelocity());
 	}
 }
