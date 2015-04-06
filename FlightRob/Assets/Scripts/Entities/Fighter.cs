@@ -16,11 +16,14 @@ public class Fighter : Entity {
 		m_controller = gameObject.AddComponent<FRCharactorController>();
 
 
-		m_platform.PlacePlatform(new Vector3(0.5f,0,0));
+		m_platform.PlacePlatform(new Vector3(0,-0.5f,0),transform.localRotation);
 		Object gun = Resources.Load("Entities/Gun");
 		GameObject weapon = (GameObject)GameObject.Instantiate(gun,Vector3.zero,Quaternion.identity);
 		m_weapon = weapon.GetComponent<Weapon>();
 		m_platform.AttachWeaponToSlot(m_weapon);
+		Quaternion forward = Quaternion.LookRotation(transform.forward,Vector3.up);
+		m_weapon.transform.rotation=forward;
+		m_weapon.SetupWeapon(this);
 	}
 	
 	// Update is called once per frame

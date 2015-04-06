@@ -39,12 +39,12 @@ public class FRCharactorController : MonoBehaviour {
 		}
 		if(m_behaviour.IsUp())
 		{
-			transform.RotateAround(transform.right,0.1f);
+			transform.RotateAround(transform.right,0.05f);
 			//m_desireVelocity += cruiseSpeed*new Vector3(0,1,0);
 		}
 		if(m_behaviour.IsDown())
 		{
-			transform.RotateAround(transform.right,-0.1f);
+			transform.RotateAround(transform.right,-0.05f);
 			//m_desireVelocity += cruiseSpeed*new Vector3(0,-1,0);
 		}
 
