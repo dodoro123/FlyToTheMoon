@@ -4,19 +4,19 @@ using System.Collections;
 public class FRCameraController : MonoBehaviour
 {
 	public Vector3 m_moveDir;
-	Fighter m_target;
+	Entity m_target;
 	// Use this for initialization
 	void Start () {
-		m_target = (Fighter)EntityManager.m_singleton.GetFighter();
+		m_target = EntityManager.m_singleton.GetFighter();
 	}
 	
 	// Update is called once per frame
-	void LateUpdate () {
+	void Update () {
 		//transform.position+=m_moveDir;
-		Follow(m_target.transform.position+new Vector3(0,5,-25)+m_target.GetVelocity());
+		Follow(m_target.transform.position+new Vector3(0,0,-25));
 	}
 	void Follow(Vector3 pos)
 	{
-		transform.position = Vector3.Lerp(transform.position,pos,1f);
+		transform.position = Vector3.Lerp(transform.position,pos,0.1f);
 	}
 }
