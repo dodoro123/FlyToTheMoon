@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: c18f9f4f241da9b4385c694e7d3bc31a
-timeCreated: 1429032938
+guid: 472bd80058e1f5041acb4fdf3e2da67a
+timeCreated: 1429379775
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: PRO_Tree_02
+    4300000: PRO_Tree_03
     9500000: //RootNode
   materials:
     importMaterials: 1
