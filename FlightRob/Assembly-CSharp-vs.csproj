@@ -49,11 +49,14 @@
      <Compile Include="Assets\Scripts\Controllers\FRCameraController.cs" />
      <Compile Include="Assets\Scripts\Controllers\FRCharactorBehaviour.cs" />
      <Compile Include="Assets\Scripts\Controllers\FRCharactorController.cs" />
+     <Compile Include="Assets\Scripts\Controllers\VehicleController.cs" />
      <Compile Include="Assets\Scripts\Entities\Bullet.cs" />
      <Compile Include="Assets\Scripts\Entities\Entity.cs" />
      <Compile Include="Assets\Scripts\Entities\Fighter.cs" />
+     <Compile Include="Assets\Scripts\Entities\Tank.cs" />
      <Compile Include="Assets\Scripts\Entities\Weapon.cs" />
      <Compile Include="Assets\Scripts\Entities\WeaponPlatform.cs" />
+     <Compile Include="Assets\Scripts\Managers\AIServiceManager.cs" />
      <Compile Include="Assets\Scripts\Managers\AppManager.cs" />
      <Compile Include="Assets\Scripts\Managers\DynamicLevelManager.cs" />
      <Compile Include="Assets\Scripts\Managers\EntityManager.cs" />

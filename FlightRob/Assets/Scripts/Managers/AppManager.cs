@@ -8,6 +8,7 @@ public class AppManager : Manager<AppManager>
 	public EntityManager 		m_entityManager {get;private set;}
 	public InstantiateManager 	m_instantiateManager {get;private set;}
 	public DynamicLevelManager 	m_dynamicLevelManager{get;private set;}
+	public AIServiceManager		m_AI{get;private set;}
 
 	// Use this for initializationØ
 	void Awake () {
@@ -15,6 +16,7 @@ public class AppManager : Manager<AppManager>
 		m_entityManager = gameObject.AddComponent<EntityManager>();
 		m_instantiateManager = gameObject.AddComponent<InstantiateManager>();
 		m_dynamicLevelManager = gameObject.AddComponent<DynamicLevelManager>();
+		m_AI = gameObject.AddComponent<AIServiceManager>();
 
 	}
 	
