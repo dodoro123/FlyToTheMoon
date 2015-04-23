@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class VehicleController : MonoBehaviour {
+public class VehicleController : Controller {
 
-	Vector3 m_velocity;
 	// Use this for initialization
 	void Start () {
-	
+		m_MaxVel = 10f;
 	}
 	
 	// Update is called once per frame
@@ -16,10 +15,6 @@ public class VehicleController : MonoBehaviour {
 		SnapOnGround();
 	}
 
-	void MoveTo(Vector3 point)
-	{
-		transform.position = UnityEngine.Vector3.SmoothDamp(transform.position,point,ref m_velocity,1f);
-	}
 
 	void SnapOnGround()
 	{

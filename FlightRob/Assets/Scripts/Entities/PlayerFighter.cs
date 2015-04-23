@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Fighter : Entity {
+public class PlayerFighter : Entity {
+
 
 	WeaponPlatform 			m_platform;
 	Weapon 					m_weapon;
+	FRCharactorBehaviour 	m_behaviour;
 	Controller	m_controller;
 	// Use this for initialization
 	void Start () 
 	{
+		m_behaviour = gameObject.GetComponent<FRCharactorBehaviour>();
 		m_platform = gameObject.AddComponent<WeaponPlatform>();
 		m_controller = (Controller)gameObject.GetComponent(typeof(Controller));
-		
-		
+
+
 		m_platform.PlacePlatform(new Vector3(0,-0.5f,0),transform.localRotation);
 		Object gun = Resources.Load("Entities/Gun");
 		GameObject weapon = (GameObject)GameObject.Instantiate(gun,Vector3.zero,Quaternion.identity);
@@ -26,12 +29,12 @@ public class Fighter : Entity {
 	// Update is called once per frame
 	void Update () 
 	{
-		if(Time.frameCount%10==0)
+		if(m_behaviour.IsFiring())
 		{
 			m_weapon.Fire();
 		}
 	}
-	
+
 	public Vector3 GetVelocity()
 	{
 		return m_controller.velocity;

@@ -18,7 +18,7 @@ public class DynamicLevelManager : Manager<DynamicLevelManager> {
 	{
 		if(m_components.Count>2)
 		{
-			Fighter fighter = (Fighter)EntityManager.m_singleton.GetFighter();
+			PlayerFighter fighter = EntityManager.m_singleton.GetPlayerFighter();
 			if(m_next.m_bouds.Contains(fighter.transform.position - m_next.transform.position))
 			{
 				LevelComponent candidate=null;

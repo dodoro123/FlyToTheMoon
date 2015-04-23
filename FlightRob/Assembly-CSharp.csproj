@@ -46,6 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Controllers\AircraftController.cs" />
+     <Compile Include="Assets\Scripts\Controllers\Controller.cs" />
      <Compile Include="Assets\Scripts\Controllers\FRCameraController.cs" />
      <Compile Include="Assets\Scripts\Controllers\FRCharactorBehaviour.cs" />
      <Compile Include="Assets\Scripts\Controllers\FRCharactorController.cs" />
@@ -53,6 +55,7 @@
      <Compile Include="Assets\Scripts\Entities\Bullet.cs" />
      <Compile Include="Assets\Scripts\Entities\Entity.cs" />
      <Compile Include="Assets\Scripts\Entities\Fighter.cs" />
+     <Compile Include="Assets\Scripts\Entities\PlayerFighter.cs" />
      <Compile Include="Assets\Scripts\Entities\Tank.cs" />
      <Compile Include="Assets\Scripts\Entities\Weapon.cs" />
      <Compile Include="Assets\Scripts\Entities\WeaponPlatform.cs" />

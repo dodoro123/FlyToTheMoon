@@ -14,12 +14,12 @@ public class AIServiceManager : Manager<AIServiceManager> {
 
 	public Vector3 GetPlayerVelocity()
 	{
-		Fighter fighter = (Fighter)EntityManager.m_singleton.GetFighter();
+		PlayerFighter fighter = EntityManager.m_singleton.GetPlayerFighter();
 		return fighter.GetVelocity();
 	}
 	public Vector3 GetPredictPlayerPosition()
 	{
-		Fighter fighter = (Fighter)EntityManager.m_singleton.GetFighter();
+		PlayerFighter fighter = EntityManager.m_singleton.GetPlayerFighter();
 
 		return fighter.transform.position + 2*fighter.GetVelocity();
 	}

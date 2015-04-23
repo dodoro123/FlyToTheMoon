@@ -6,7 +6,7 @@ public class EntityManager : Manager<EntityManager>
 {
 	
 	List<Entity> m_entityList = new List<Entity>();
-	Entity m_fighter;
+	PlayerFighter m_fighter;
 	// Use this for initialization
 	void Start () {
 	
@@ -20,15 +20,15 @@ public class EntityManager : Manager<EntityManager>
 	public void Register(Entity entity)
 	{
 		m_entityList.Add(entity);
-		if(entity is Fighter)
-			m_fighter = entity;
+		if(entity is PlayerFighter)
+			m_fighter = entity as PlayerFighter;
 
 	}
 	public void Unregister(Entity entity)
 	{
 		m_entityList.Remove(entity);
 	}
-	public Entity GetFighter()
+	public PlayerFighter GetPlayerFighter()
 	{
 		return m_fighter;
 	}

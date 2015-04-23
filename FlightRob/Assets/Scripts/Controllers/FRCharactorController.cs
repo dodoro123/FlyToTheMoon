@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class FRCharactorController : MonoBehaviour {
+public class FRCharactorController : Controller {
 	Camera camera;
 	FRCharactorBehaviour m_behaviour ;//= new FRCharactorBehaviour();
 	Vector3 m_desireVelocity;
@@ -10,9 +10,8 @@ public class FRCharactorController : MonoBehaviour {
 	public float m_gravity = 9.8f;
 	public float m_airFraction = 0.5f;
 	public float m_airFraction2 = 2f;
-	float m_cruiseSpeed =5f;
-	float m_flyPower =0.5f;
-	public Vector3 m_velocity{get;private set;}
+	float m_cruiseSpeed =10f;
+	float m_flyPower =0.7f;
 	Vector3 m_forwardVel;
 
 	// Use this for initialization
