@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class EntityManager : Manager<EntityManager>
 {
-	
+	//List<Type> m_entityType = new List<Type>();
 	List<Entity> m_entityList = new List<Entity>();
 	PlayerFighter m_fighter;
 	// Use this for initialization
@@ -20,6 +20,10 @@ public class EntityManager : Manager<EntityManager>
 	public void Register(Entity entity)
 	{
 		m_entityList.Add(entity);
+		//if(!m_entityType.Contains(entity.GetType()))
+		//{
+		//	m_entityType.Add(entity.GetType());
+		//}
 		if(entity is PlayerFighter)
 			m_fighter = entity as PlayerFighter;
 

@@ -11,6 +11,7 @@ public class AircraftController : Controller {
 	// Update is called once per frame
 	void Update () {
 		Vector3 pos = AIServiceManager.m_singleton.GetPredictPlayerPosition();
+		pos+=new Vector3(Random.Range(-10,10f),Random.Range(-10,10f),0);
 		MoveTo(pos);
 	}
 }

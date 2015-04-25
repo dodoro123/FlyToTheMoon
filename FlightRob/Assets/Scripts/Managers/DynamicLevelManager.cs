@@ -33,13 +33,16 @@ public class DynamicLevelManager : Manager<DynamicLevelManager> {
 				m_current = m_next;
 				m_next = candidate;
 				Connect(m_current,m_next);
+				OnEnterLevel();
 				//UnityEditor.EditorApplication.isPaused = true;
 			}
 		}
 	}
 	void OnEnterLevel()
 	{
+		PlayerFighter fighter = EntityManager.m_singleton.GetPlayerFighter();
 
+		InstantiateManager.m_singleton.Instantiate(EntityType.Helicopter,fighter.transform.position,Quaternion.Euler(0,-90,0));
 	}
 
 	void Connect(LevelComponent before,LevelComponent after)
