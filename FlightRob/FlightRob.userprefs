@@ -1,33 +1,34 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Managers/AIServiceManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/Managers/AIServiceManager.cs" Line="17" Column="1" />
-      <File FileName="Assets/Scripts/Managers/DynamicLevelManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Managers/AIServiceManager.cs" Line="23" Column="3" />
+      <File FileName="Assets/Scripts/Managers/DynamicLevelManager.cs" Line="50" Column="94" />
       <File FileName="Assets/Scripts/Graphics/Shaders/Sketch.shader" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Controllers/FRCameraController.cs" Line="8" Column="32" />
+      <File FileName="Assets/Scripts/Controllers/FRCameraController.cs" Line="23" Column="2" />
       <File FileName="Assets/Scripts/Controllers/FRCharactorBehaviour.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Controllers/FRCharactorController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Entities/Entity.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Managers/EntityManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Controllers/FRCharactorController.cs" Line="33" Column="22" />
+      <File FileName="Assets/Scripts/Entities/Entity.cs" Line="15" Column="1" />
+      <File FileName="Assets/Scripts/Managers/EntityManager.cs" Line="26" Column="6" />
       <File FileName="Assets/Scripts/Managers/AppManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Managers/LevelComponent.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Managers/LevelComponent.cs" Line="20" Column="2" />
       <File FileName="Assets/Scripts/Managers/Manager.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Managers/LevelLoadingManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Entities/PlayerFighter.cs" Line="39" Column="3" />
-      <File FileName="Assets/Scripts/Entities/WeaponPlatform.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Entities/Weapon.cs" Line="30" Column="1" />
+      <File FileName="Assets/Scripts/Entities/PlayerFighter.cs" Line="23" Column="43" />
+      <File FileName="Assets/Scripts/Entities/WeaponPlatform.cs" Line="20" Column="2" />
+      <File FileName="Assets/Scripts/Entities/Weapon.cs" Line="25" Column="73" />
       <File FileName="Assets/Scripts/Entities/Bullet.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Entities/Tank.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Controllers/VehicleController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Managers/InstantiateManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Controllers/AircraftController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Controllers/Controller.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Entities/Tank.cs" Line="15" Column="2" />
+      <File FileName="Assets/Scripts/Controllers/VehicleController.cs" Line="18" Column="2" />
+      <File FileName="Assets/Scripts/Managers/InstantiateManager.cs" Line="23" Column="36" />
+      <File FileName="Assets/Scripts/Controllers/AircraftController.cs" Line="16" Column="3" />
+      <File FileName="Assets/Scripts/Controllers/Controller.cs" Line="23" Column="1" />
+      <File FileName="Assets/Scripts/Entities/Fighter.cs" Line="21" Column="71" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/xiefuhao/FlyToTheMoon/FlyToTheMoon/FlightRob/Assets/Scripts/Entities/Weapon.cs" line="27" />
+      <Breakpoint file="/Users/xiefuhao/FlyToTheMoon/FlyToTheMoon/FlightRob/Assets/Scripts/Entities/Fighter.cs" line="16" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

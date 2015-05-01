@@ -8,8 +8,8 @@ public class FRCharactorController : Controller {
 	float m_speedMultiplier = 0.3f;
 	public float m_enginePower = 5f;
 	public float m_gravity = 9.8f;
-	public float m_airFraction = 0.8f;
-	public float m_airFraction2 = 2f;
+	public float m_airFraction = 1f;
+	public float m_airFraction2 = 5f;
 	float m_cruiseSpeed =10f;
 	float m_flyPower =0.7f;
 	Vector3 m_forwardVel;

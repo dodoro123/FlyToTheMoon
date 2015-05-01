@@ -13,7 +13,7 @@ public class FRCameraController : MonoBehaviour
 	// Update is called once per frame
 	void LateUpdate () {
 		//transform.position+=m_moveDir;
-		Follow(m_target.transform.position+new Vector3(0,0,-25)+1.3f*m_target.GetVelocity());
+		Follow(m_target.transform.position+new Vector3(0,0,-25)+1.1f*m_target.GetVelocity());
 	}
 	void Follow(Vector3 pos)
 	{

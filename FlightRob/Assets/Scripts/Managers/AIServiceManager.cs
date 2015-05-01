@@ -21,6 +21,6 @@ public class AIServiceManager : Manager<AIServiceManager> {
 	{
 		PlayerFighter fighter = EntityManager.m_singleton.GetPlayerFighter();
 
-		return fighter.transform.position + 2*fighter.GetVelocity();
+		return fighter.transform.position + 1.5f*fighter.GetVelocity();
 	}
 }
