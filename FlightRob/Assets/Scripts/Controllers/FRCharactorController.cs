@@ -14,6 +14,8 @@ public class FRCharactorController : Controller {
 	float m_flyPower =0.7f;
 	Vector3 m_forwardVel;
 
+	int m_rollDegreeACC = 180;
+	int m_rollDegree = 5;
 	// Use this for initialization
 	void Start ()
 	{
@@ -38,15 +40,36 @@ public class FRCharactorController : Controller {
 		}
 		if(m_behaviour.IsUp())
 		{
-			transform.RotateAround(transform.right,0.05f);
+			transform.RotateAround(transform.right,Time.deltaTime);
 			//m_desireVelocity += cruiseSpeed*new Vector3(0,1,0);
 		}
-		if(m_behaviour.IsDown())
+		else if(m_behaviour.IsDown())
 		{
-			transform.RotateAround(transform.right,-0.05f);
+			transform.RotateAround(transform.right,-1*Time.deltaTime);
 			//m_desireVelocity += cruiseSpeed*new Vector3(0,-1,0);
 		}
+		else
+		{
+			if(transform.up.y<0&&m_rollDegreeACC==180)
+			{
+				m_rollDegreeACC = 0;
+			}
 
+			if(m_rollDegreeACC<180)
+			{
+				m_rollDegreeACC+=m_rollDegree;
+				transform.Rotate(new Vector3(0,0,m_rollDegree));
+			}
+			else
+			{
+				m_rollDegreeACC = 180;
+				float pitch = transform.forward.y;
+				pitch = Mathf.Lerp(pitch,0,0.8f*Time.deltaTime);
+				transform.forward = new Vector3(transform.forward.x,pitch,transform.forward.z);
+			}
+
+		}
+		//Debug.Log(transform.forward+"-"+transform.up);
 		m_velocity+=(m_enginePower*transform.forward - m_forwardVel*m_airFraction -(m_velocity-m_forwardVel)*m_airFraction2 +m_cruiseSpeed*m_flyPower*transform.up+m_gravity*Vector3.down)*Time.deltaTime;
 
 		m_cruiseSpeed = Vector3.Dot(m_velocity,transform.forward);
@@ -64,5 +87,16 @@ public class FRCharactorController : Controller {
 		if(viewPortPoint.x>1||viewPortPoint.x<0||viewPortPoint.y>1||viewPortPoint.y<0)
 			return true;
 		return false;
+	}
+	public void OnDrawGizmos()
+	{
+		//Gizmos.color = Color.red;
+		//Gizmos.DrawRay(transform.position,transform.forward);
+		//Gizmos.color = Color.green;
+		//Gizmos.DrawRay(transform.position,transform.up);
+		//Gizmos.color = Color.blue;
+		//Gizmos.DrawRay(transform.position,transform.right);
+		Gizmos.color = Color.cyan;
+		Gizmos.DrawRay(transform.position, Vector3.Cross(transform.forward,Vector3.back));
 	}
 }
