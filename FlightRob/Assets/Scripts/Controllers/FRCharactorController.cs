@@ -15,7 +15,7 @@ public class FRCharactorController : Controller {
 	Vector3 m_forwardVel;
 
 	int m_rollDegreeACC = 180;
-	int m_rollDegree = 5;
+	int m_rollDegree = 10;
 	// Use this for initialization
 	void Start ()
 	{
@@ -57,8 +57,14 @@ public class FRCharactorController : Controller {
 
 			if(m_rollDegreeACC<180)
 			{
-				m_rollDegreeACC+=m_rollDegree;
-				transform.Rotate(new Vector3(0,0,m_rollDegree));
+				float _rollDegree = Mathf.Lerp(m_rollDegree,0,m_rollDegreeACC/180);
+				if((m_rollDegreeACC+_rollDegree)>180)
+				{
+					_rollDegree = 180 - m_rollDegreeACC;
+				}
+				m_rollDegreeACC+=(int)_rollDegree;
+
+				transform.Rotate(new Vector3(0,0,_rollDegree));
 			}
 			else
 			{

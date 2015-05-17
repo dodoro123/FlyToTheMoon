@@ -33,16 +33,17 @@ public class DynamicLevelManager : Manager<DynamicLevelManager> {
 				m_current = m_next;
 				m_next = candidate;
 				Connect(m_current,m_next);
-				OnEnterLevel();
+				OnEnterLevel(m_current,m_next);
 				//UnityEditor.EditorApplication.isPaused = true;
 			}
 		}
 	}
-	void OnEnterLevel()
+	void OnEnterLevel(LevelComponent _current,LevelComponent _next)
 	{
 		PlayerFighter fighter = EntityManager.m_singleton.GetPlayerFighter();
 
-		InstantiateManager.m_singleton.Instantiate(EntityType.Helicopter,fighter.transform.position,Quaternion.Euler(0,-90,0));
+		InstantiateManager.m_singleton.Instantiate(EntityType.Helicopter,_next.transform.position,Quaternion.Euler(0,-90,0));
+		InstantiateManager.m_singleton.Instantiate(EntityType.Tank,_next.transform.position,Quaternion.Euler(0,-90,0));
 	}
 
 	void Connect(LevelComponent before,LevelComponent after)
@@ -51,6 +52,8 @@ public class DynamicLevelManager : Manager<DynamicLevelManager> {
 		Debug.DrawLine(before.m_center,after.m_center,Color.black,1);
 	}
 
+
+	
 	public void RegisterLevelComponent(LevelComponent subLevel,bool starter=false)
 	{
 		if(starter)

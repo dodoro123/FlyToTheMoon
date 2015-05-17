@@ -19,7 +19,7 @@ public class VehicleController : Controller {
 	void SnapOnGround()
 	{
 		RaycastHit hitInfo;
-		if(Physics.Raycast(transform.position,Vector3.down,out hitInfo,1))
+		if(Physics.Raycast(transform.position,Vector3.down,out hitInfo,1000))
 			transform.position = hitInfo.point;	
 	}
 }

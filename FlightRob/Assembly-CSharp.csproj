@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\Entities\WeaponPlatform.cs" />
      <Compile Include="Assets\Scripts\Managers\AIServiceManager.cs" />
      <Compile Include="Assets\Scripts\Managers\AppManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\DamageManager.cs" />
      <Compile Include="Assets\Scripts\Managers\DynamicLevelManager.cs" />
      <Compile Include="Assets\Scripts\Managers\EntityManager.cs" />
      <Compile Include="Assets\Scripts\Managers\InstantiateManager.cs" />
