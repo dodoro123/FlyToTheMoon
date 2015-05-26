@@ -22,8 +22,8 @@ public class Weapon : Entity {
 	public void Fire()
 	{
 		Quaternion forward = Quaternion.LookRotation(transform.forward,Vector3.up);
-		GameObject bullet = (GameObject)GameObject.Instantiate(Resources.Load("Entities/Bullet"),transform.position+transform.forward,forward);
+		GameObject bullet = (GameObject)GameObject.Instantiate(Resources.Load("Entities/Bullet"),transform.position+2*transform.forward,forward);
 		Bullet bulletCom = bullet.GetComponent<Bullet>();
-		//bulletCom.InitVelocity((m_owner as PlayerFighter).GetVelocity());
+		bulletCom.Init(m_owner);
 	}
 }

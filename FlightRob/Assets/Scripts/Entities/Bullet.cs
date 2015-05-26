@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Bullet : Entity {
 
+	public Entity m_owner{get;private set;}
 	float startTimeStamp;
 	Vector3 initVelocity;
 	// Use this for initialization
@@ -22,6 +23,10 @@ public class Bullet : Entity {
 	public void InitVelocity(Vector3 vel)
 	{
 		initVelocity = vel;
+	}
+	public void Init(Entity _entity)
+	{
+		m_owner = _entity;
 	}
 	void OnCollisionEnter(Collision collision) 
 	{
