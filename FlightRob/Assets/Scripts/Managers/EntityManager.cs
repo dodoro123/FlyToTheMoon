@@ -55,9 +55,14 @@ public class EntityManager : Manager<EntityManager>
 		}
 		else
 		{
-			if(list.Count!=0)
+			if(list.Count!=0)//reusing entitys
 			{
 				result = list[0];
+				Renderer[] renders = result.GetComponentsInChildren<MeshRenderer>();
+				foreach(var render in renders)
+				{
+					render.enabled = true;
+				}
 				result.transform.position = _pos;
 				result.transform.rotation = _rot;
 				SafeAddTo(m_used,_type,result);
@@ -65,7 +70,7 @@ public class EntityManager : Manager<EntityManager>
 			}
 			else
 			{
-				result = InstantiateManager.m_singleton.Instantiate(_type,_pos,_rot);
+ 				result = InstantiateManager.m_singleton.Instantiate(_type,_pos,_rot);
 				result.m_type = _type;
 				SafeAddTo(m_used,_type,result);
 			}
@@ -91,6 +96,7 @@ public class EntityManager : Manager<EntityManager>
 						//todo hide it
 						_entity.transform.position = new Vector3(1000,1000,1000);
 						SafeAddTo(m_pool,_type,_entity);
+						list.Remove(_entity);
 					}
 				}
 			}

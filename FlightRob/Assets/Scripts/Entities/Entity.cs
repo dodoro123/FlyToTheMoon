@@ -11,7 +11,29 @@ public class Entity : MonoBehaviour {
 
 	void OnDie()
 	{
+		Renderer[] renders = gameObject.GetComponentsInChildren<MeshRenderer>();
+		foreach(var render in renders)
+		{
+			render.enabled = false;
+		}
+		ParticleSystem vfx = gameObject.GetComponentInChildren<ParticleSystem>();
+		if(vfx!=null)
+		{
+			vfx.Play();
+		}
 
+		StartCoroutine(RealseEntity());
+	}
+	IEnumerator RealseEntity()
+	{
+		yield return new WaitForSeconds(1);
+		EntityManager.m_singleton.RealseEntity(m_type,this);
+		ParticleSystem vfx = gameObject.GetComponentInChildren<ParticleSystem>();
+		if(vfx!=null)
+		{
+			vfx.Stop();
+		}
+		yield return 1;
 	}
 
 	void OnCollisionEnter(Collision collision)
@@ -23,7 +45,7 @@ public class Entity : MonoBehaviour {
 		}
 		else
 		{
-			EntityManager.m_singleton.RealseEntity(m_type,this);
+			Debug.Log(name+" die on collide with "+collision.gameObject.name);
 			OnDie ();
 		}
 	}

@@ -6,12 +6,12 @@ public class FRCharactorController : Controller {
 	FRCharactorBehaviour m_behaviour ;//= new FRCharactorBehaviour();
 	Vector3 m_desireVelocity;
 	float m_speedMultiplier = 0.3f;
-	public float m_enginePower = 5f;
+	public float m_enginePower = 3f;
 	public float m_gravity = 9.8f;
-	public float m_airFraction = 1f;
-	public float m_airFraction2 = 5f;
-	float m_cruiseSpeed =10f;
-	float m_flyPower =0.7f;
+	public float m_airFraction = 2f;
+	public float m_airFraction2 = 10f;
+	float m_cruiseSpeed =5f;
+	float m_flyPower =0.5f;
 	Vector3 m_forwardVel;
 
 	int m_rollDegreeACC = 180;
@@ -38,12 +38,13 @@ public class FRCharactorController : Controller {
 		{
 			m_enginePower=2.5f;
 		}
-		if(m_behaviour.IsUp())
+
+		if(m_behaviour.IsUp()&&m_rollDegreeACC==180)
 		{
 			transform.RotateAround(transform.right,Time.deltaTime);
 			//m_desireVelocity += cruiseSpeed*new Vector3(0,1,0);
 		}
-		else if(m_behaviour.IsDown())
+		else if(m_behaviour.IsDown()&&m_rollDegreeACC==180)
 		{
 			transform.RotateAround(transform.right,-1*Time.deltaTime);
 			//m_desireVelocity += cruiseSpeed*new Vector3(0,-1,0);
@@ -54,7 +55,6 @@ public class FRCharactorController : Controller {
 			{
 				m_rollDegreeACC = 0;
 			}
-
 			if(m_rollDegreeACC<180)
 			{
 				float _rollDegree = Mathf.Lerp(m_rollDegree,0,m_rollDegreeACC/180);
@@ -63,7 +63,7 @@ public class FRCharactorController : Controller {
 					_rollDegree = 180 - m_rollDegreeACC;
 				}
 				m_rollDegreeACC+=(int)_rollDegree;
-
+				
 				transform.Rotate(new Vector3(0,0,_rollDegree));
 			}
 			else
@@ -73,8 +73,11 @@ public class FRCharactorController : Controller {
 				pitch = Mathf.Lerp(pitch,0,0.8f*Time.deltaTime);
 				transform.forward = new Vector3(transform.forward.x,pitch,transform.forward.z);
 			}
-
 		}
+
+
+
+
 		//Debug.Log(transform.forward+"-"+transform.up);
 		m_velocity+=(m_enginePower*transform.forward - m_forwardVel*m_airFraction -(m_velocity-m_forwardVel)*m_airFraction2 +m_cruiseSpeed*m_flyPower*transform.up+m_gravity*Vector3.down)*Time.deltaTime;
 
