@@ -16,8 +16,8 @@ public class InstantiateManager : Manager<InstantiateManager>
 	// Use this for initialization
 	void Start () 
 	{
-		m_entityDic.Add(EntityType.Helicopter,"Entities/Fighter_lvl2");
-		m_entityDic.Add(EntityType.Tank,"Entities/Tank");
+		m_entityDic.Add(EntityType.Helicopter,"Entities/Fighter_Enemy");
+		m_entityDic.Add(EntityType.Tank,"Entities/Tank_Enemy");
 	}
 	
 	// Update is called once per frame
