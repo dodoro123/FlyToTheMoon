@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Entity : MonoBehaviour {
 
+    bool Dieing= false;
 	public EntityType m_type;
 	void Awake()
 	{
@@ -11,18 +12,22 @@ public class Entity : MonoBehaviour {
 
 	void OnDie()
 	{
-		Renderer[] renders = gameObject.GetComponentsInChildren<MeshRenderer>();
-		foreach(var render in renders)
-		{
-			render.enabled = false;
-		}
-		ParticleSystem vfx = gameObject.GetComponentInChildren<ParticleSystem>();
-		if(vfx!=null)
-		{
-			vfx.Play();
-		}
+        if (!Dieing)
+        {
+            Dieing = true;
+            Renderer[] renders = gameObject.GetComponentsInChildren<MeshRenderer>();
+            foreach (var render in renders)
+            {
+                render.enabled = false;
+            }
+            ParticleSystem vfx = gameObject.GetComponentInChildren<ParticleSystem>();
+            if (vfx != null)
+            {
+                vfx.Play();
+            }
 
-		StartCoroutine(RealseEntity());
+            StartCoroutine(RealseEntity());
+        }
 	}
 	IEnumerator RealseEntity()
 	{
@@ -33,7 +38,8 @@ public class Entity : MonoBehaviour {
 		{
 			vfx.Stop();
 		}
-		yield return 1;
+        Dieing = false;
+        yield return 1;
 	}
 
 	void OnCollisionEnter(Collision collision)

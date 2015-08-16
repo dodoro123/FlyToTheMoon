@@ -21,3 +21,6 @@ sysinfo.txt
 *.userprefs
 
 *.userprefs
+*.csproj
+*.csproj
+*.unityproj

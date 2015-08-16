@@ -16,7 +16,7 @@ public class InstantiateManager : Manager<InstantiateManager>
 	// Use this for initialization
 	void Start () 
 	{
-		m_entityDic.Add(EntityType.Helicopter,"Entities/Fighter_Enemy");
+		m_entityDic.Add(EntityType.Helicopter,"Entities/Helicopter_Enemy");
 		m_entityDic.Add(EntityType.Tank,"Entities/Tank_Enemy");
 	}
 	
