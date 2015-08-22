@@ -1,15 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Tank : Entity {
+public class Tank : LiveEntity {
 
 	// Use this for initialization
 	void Start () {
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    void OnCollisionEnter(Collision collision)
+    {
+        Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+        if ((bullet && bullet.m_owner is PlayerFighter) )
+        {
+            Debug.Log(name + " die on collide with " + collision.gameObject.name);
+            if (!m_triggerDieing)
+                m_triggerDieing = true;
+        }
+    }
 }

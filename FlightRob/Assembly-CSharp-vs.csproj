@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\Entities\Bullet.cs" />
      <Compile Include="Assets\Scripts\Entities\Entity.cs" />
      <Compile Include="Assets\Scripts\Entities\Fighter.cs" />
+     <Compile Include="Assets\Scripts\Entities\LiveEntity.cs" />
      <Compile Include="Assets\Scripts\Entities\PlayerFighter.cs" />
      <Compile Include="Assets\Scripts\Entities\Tank.cs" />
      <Compile Include="Assets\Scripts\Entities\Weapon.cs" />
@@ -121,6 +122,7 @@
      <None Include="Assets\ShaderForge\Example Assets\Shaders\Refraction.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicOutline.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfField34.shader" />
+     <None Include="Assets\Art\Shader\SkyShader.shader" />
      <None Include="Assets\ShaderForge\Example Assets\Shaders\Parallax.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\SSAOShader.shader" />

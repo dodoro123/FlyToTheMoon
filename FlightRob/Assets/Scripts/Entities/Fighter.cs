@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Fighter : Entity {
+public class Fighter : LiveEntity {
 
 	WeaponPlatform 			m_platform;
 	Weapon 					m_weapon;
@@ -22,9 +22,6 @@ public class Fighter : Entity {
 		m_weapon.transform.rotation=forward;
 		m_weapon.SetupWeapon(this);
 
-        m_triggerDieing = false;
-        m_dieing = false;
-
 
     }
 
@@ -33,12 +30,10 @@ public class Fighter : Entity {
 		return m_controller.velocity;
 	}
 
-    bool m_triggerDieing = false;
-    bool m_dieing = false;
     void OnCollisionEnter(Collision collision)
     {
         Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-        if ((bullet && bullet.m_owner is Fighter) || collision.gameObject.GetComponent<Fighter>())
+        if ((bullet && bullet.m_owner is Fighter) || collision.gameObject.GetComponent<Fighter>() || collision.gameObject.GetComponent<Tank>())
         {
             //do nothing
         }
@@ -49,46 +44,14 @@ public class Fighter : Entity {
                 m_triggerDieing = true;
         }
     }
-    IEnumerator RealseEntity()
+
+    override public void Update()
     {
-        yield return new WaitForSeconds(1);
-        EntityManager.m_singleton.RealseEntity(m_type, this);
-        ParticleSystem vfx = gameObject.GetComponentInChildren<ParticleSystem>();
-        if (vfx != null)
-        {
-            vfx.Stop();
-        }
-        m_dieing = false;
-    }
-    void Update()
-    {
+        base.Update();
         //fire
         if (Time.frameCount % 10 == 0)
         {
             m_weapon.Fire();
         }
-        //die
-        if (m_triggerDieing && !m_dieing)
-        {
-            m_dieing = true;
-            Renderer[] renders = gameObject.GetComponentsInChildren<MeshRenderer>();
-            foreach (var render in renders)
-            {
-                render.enabled = false;
-            }
-            ParticleSystem vfx = gameObject.GetComponentInChildren<ParticleSystem>();
-            if (vfx != null)
-            {
-                vfx.Play();
-            }
-            Debug.Log("OnDie:" + name + " t:" + Time.frameCount);
-            StartCoroutine(RealseEntity());
-        }
-    }
-    public override void OnAwake()
-    {
-        base.OnAwake();
-        m_triggerDieing = false;
-        m_dieing = false;
     }
 }

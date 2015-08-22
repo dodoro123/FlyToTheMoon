@@ -5,7 +5,7 @@ public class VehicleController : Controller {
 
 	// Use this for initialization
 	void Start () {
-		m_MaxVel = 10f;
+		m_MaxVel = 30f;
 	}
 	
 	// Update is called once per frame

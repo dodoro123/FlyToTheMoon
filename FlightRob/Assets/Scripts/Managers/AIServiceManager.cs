@@ -17,10 +17,10 @@ public class AIServiceManager : Manager<AIServiceManager> {
 		PlayerFighter fighter = EntityManager.m_singleton.GetPlayerFighter();
 		return fighter.GetVelocity();
 	}
-	public Vector3 GetPredictPlayerPosition()
+	public Vector3 GetPredictPlayerPosition(float multi = 1.5f)
 	{
 		PlayerFighter fighter = EntityManager.m_singleton.GetPlayerFighter();
 
-		return fighter.transform.position + 1.5f*fighter.GetVelocity();
+		return fighter.transform.position + multi * fighter.GetVelocity();
 	}
 }
