@@ -22,7 +22,12 @@ public class Controller : MonoBehaviour {
 
 	protected void MoveTo(Vector3 point)
 	{
-		transform.position = UnityEngine.Vector3.SmoothDamp(transform.position,point,ref m_velocity,1f,m_MaxVel);
+        Debug.DrawLine(transform.position, point);
+        transform.position = UnityEngine.Vector3.SmoothDamp(transform.position,point,ref m_velocity,1f,m_MaxVel);
 		//Debug.Log("m_velocity:"+m_velocity.magnitude);
 	}
+    protected Vector3 GetLevelCenter()
+    {
+        return DynamicLevelManager.m_singleton.GetCurrentCenter();
+    }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WeaponPlatform : Entity 
+public class WeaponPlatform : MonoBehaviour 
 {
 
 	Vector3 		m_weaponSlot = new Vector3(0,0,0);

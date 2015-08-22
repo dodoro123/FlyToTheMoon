@@ -5,7 +5,7 @@ public class AircraftController : Controller {
 
 	// Use this for initialization
 	void Start () {
-		m_MaxVel = 100;
+		m_MaxVel = 1000;
 	}
 	
 	// Update is called once per frame

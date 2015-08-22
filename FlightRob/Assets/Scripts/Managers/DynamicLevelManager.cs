@@ -67,4 +67,8 @@ public class DynamicLevelManager : Manager<DynamicLevelManager> {
 	{
 		m_components.Remove(subLevel);
 	}
+    public Vector3 GetCurrentCenter()
+    {
+        return m_current.m_bouds.center;
+    }
 }

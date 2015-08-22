@@ -50,15 +50,18 @@ public class EntityManager : Manager<EntityManager>
 			list = new List<Entity>();
 			m_pool.Add(_type,list);
 			result = InstantiateManager.m_singleton.Instantiate(_type,_pos,_rot);
-			result.m_type = _type;
-			SafeAddTo(m_used,_type,result);
+            result.OnAwake();
+            result.m_type = _type;
+            SafeAddTo(m_used,_type,result);
 		}
 		else
 		{
 			if(list.Count!=0)//reusing entitys
 			{
 				result = list[0];
-				Renderer[] renders = result.GetComponentsInChildren<MeshRenderer>();
+                result.OnAwake();
+                result.gameObject.SetActive(true);
+                Renderer[] renders = result.GetComponentsInChildren<MeshRenderer>();
 				foreach(var render in renders)
 				{
 					render.enabled = true;
@@ -71,14 +74,17 @@ public class EntityManager : Manager<EntityManager>
 			else
 			{
  				result = InstantiateManager.m_singleton.Instantiate(_type,_pos,_rot);
-				result.m_type = _type;
-				SafeAddTo(m_used,_type,result);
+                result.OnAwake();
+                result.m_type = _type;
+                result.name += m_used[_type].Count;
+                SafeAddTo(m_used,_type,result);
 			}
 		}
 		return result;
 	}
 	public void RealseEntity(EntityType _type, Entity _entity)
 	{
+        Debug.Log("RealseEntity");
 		List<Entity> list;
 		m_used.TryGetValue(_type, out list);
 		if(list == null)
@@ -95,14 +101,16 @@ public class EntityManager : Manager<EntityManager>
 					{
 						//todo hide it
 						_entity.transform.position = new Vector3(1000,1000,1000);
-						SafeAddTo(m_pool,_type,_entity);
+                        _entity.gameObject.SetActive(false);
+                        SafeAddTo(m_pool,_type,_entity);
 						list.Remove(_entity);
-					}
+                        Debug.Log("lease type:" + _type +":"+ _entity.name);
+                    }
 				}
 			}
 			else
 			{
-				Debug.LogError("try to lease type:"+_type+" which have 0 in used");
+				Debug.LogError("try to lease type:"+_type+":"+ _entity.name + " which have 0 in used");
 			}
 		}
 	}
