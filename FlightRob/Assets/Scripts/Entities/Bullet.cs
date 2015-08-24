@@ -13,9 +13,9 @@ public class Bullet : Entity {
 	
 	// Update is called once per frame
 	void Update () {
-		this.gameObject.transform.position+=(this.gameObject.transform.forward*2);
+		this.gameObject.transform.position+=(this.gameObject.transform.forward*5);
 		//UnityEditor.EditorApplication.isPaused = true;
-		if((Time.time - startTimeStamp)>5)
+		if((Time.time - startTimeStamp)>1)
 		{
 			Destroy(gameObject);
 		}

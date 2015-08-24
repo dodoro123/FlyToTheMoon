@@ -16,7 +16,7 @@ public class PlayerFighter : Entity {
 		m_controller = (Controller)gameObject.GetComponent(typeof(Controller));
 
 
-		m_platform.PlacePlatform(new Vector3(0,-0.5f,0),transform.localRotation);
+		m_platform.PlacePlatform(new Vector3(0,-0.5f,0),transform.rotation);
 		Object gun = Resources.Load("Entities/Gun");
 		GameObject weapon = (GameObject)GameObject.Instantiate(gun,Vector3.zero,Quaternion.identity);
 		m_weapon = weapon.GetComponent<Weapon>();
