@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+public delegate void RequestEntityCallBack(Entity entity);
 public class EntityManager : Manager<EntityManager>
 {
 	//List<Type> m_entityType = new List<Type>();
@@ -40,7 +40,26 @@ public class EntityManager : Manager<EntityManager>
 	{
 		return m_fighter;
 	}
-	public Entity RequestEntity(EntityType _type,Vector3 _pos,Quaternion _rot)
+    public int GetEntityNum(EntityType _type)
+    {
+        List<Entity> list;
+        m_used.TryGetValue(_type, out list);
+        if(list!=null)
+        {
+            return list.Count;
+        }
+        return 0;
+    }
+    public int GetEntityNumAll()
+    {
+        int num=0;
+        foreach(var list in m_used.Values)
+        {
+            num += list.Count;
+        }
+        return num;
+    }
+    public Entity RequestEntity(EntityType _type,Vector3 _pos,Quaternion _rot, RequestEntityCallBack callback =null)
 	{
 		List<Entity> list;
 		m_pool.TryGetValue(_type, out list);
@@ -80,6 +99,8 @@ public class EntityManager : Manager<EntityManager>
                 SafeAddTo(m_used,_type,result);
 			}
 		}
+        if(callback!=null)
+            callback(result);
 		return result;
 	}
 	public void RealseEntity(EntityType _type, Entity _entity)

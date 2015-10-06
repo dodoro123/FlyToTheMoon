@@ -51,11 +51,13 @@
      <Compile Include="Assets\Scripts\Controllers\FRCameraController.cs" />
      <Compile Include="Assets\Scripts\Controllers\FRCharactorBehaviour.cs" />
      <Compile Include="Assets\Scripts\Controllers\FRCharactorController.cs" />
+     <Compile Include="Assets\Scripts\Controllers\LootsController.cs" />
      <Compile Include="Assets\Scripts\Controllers\VehicleController.cs" />
      <Compile Include="Assets\Scripts\Entities\Bullet.cs" />
      <Compile Include="Assets\Scripts\Entities\Entity.cs" />
      <Compile Include="Assets\Scripts\Entities\Fighter.cs" />
      <Compile Include="Assets\Scripts\Entities\LiveEntity.cs" />
+     <Compile Include="Assets\Scripts\Entities\Loots.cs" />
      <Compile Include="Assets\Scripts\Entities\PlayerFighter.cs" />
      <Compile Include="Assets\Scripts\Entities\Tank.cs" />
      <Compile Include="Assets\Scripts\Entities\Weapon.cs" />
@@ -68,7 +70,9 @@
      <Compile Include="Assets\Scripts\Managers\InstantiateManager.cs" />
      <Compile Include="Assets\Scripts\Managers\LevelComponent.cs" />
      <Compile Include="Assets\Scripts\Managers\LevelLoadingManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\LootManager.cs" />
      <Compile Include="Assets\Scripts\Managers\Manager.cs" />
+     <Compile Include="Assets\Scripts\Managers\SpawningManager.cs" />
      <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EditorLabel.cs" />
      <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EnableCameraDepthInForward.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />

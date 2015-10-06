@@ -10,17 +10,20 @@ public class AppManager : Manager<AppManager>
 	public DynamicLevelManager 	m_dynamicLevelManager{get;private set;}
 	public AIServiceManager		m_AI{get;private set;}
 	public DamageManager		m_DamageManager{get; private set;}
+    public SpawningManager      m_SpawningManager { get; private set; }
+    public LootManager          m_LootManager { get; private set; }
 
-	// Use this for initializationØ
-	void Awake () {
+    // Use this for initializationØ
+    void Awake () {
 		DontDestroyOnLoad(gameObject);
 		m_entityManager = gameObject.AddComponent<EntityManager>();
 		m_instantiateManager = gameObject.AddComponent<InstantiateManager>();
 		m_dynamicLevelManager = gameObject.AddComponent<DynamicLevelManager>();
 		m_AI = gameObject.AddComponent<AIServiceManager>();
 		m_DamageManager = gameObject.AddComponent<DamageManager>();
-
-	}
+        m_SpawningManager = gameObject.AddComponent<SpawningManager>();
+        m_LootManager = gameObject.AddComponent<LootManager>();
+    }
 	
 	// Update is called once per frame
 	void Update () {

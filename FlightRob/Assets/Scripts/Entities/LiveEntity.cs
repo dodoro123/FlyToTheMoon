@@ -8,7 +8,10 @@ public class LiveEntity : Entity {
     void Start () {
 	
 	}
-	
+	protected virtual void OnDead()
+    {
+        LootManager.m_singleton.RequestLoots(m_type, transform.position);
+    }
 	// Update is called once per frame
 	virtual public void Update ()
     {
@@ -27,9 +30,10 @@ public class LiveEntity : Entity {
                 vfx.Play();
             }
             Debug.Log("OnDie:" + name + " t:" + Time.frameCount);
+            OnDead();
             StartCoroutine(RealseEntity());
         }
-        if(Vector3.Distance(EntityManager.m_singleton.GetPlayerFighter().transform.position,transform.position)>800)
+        if(Vector3.Distance(EntityManager.m_singleton.GetPlayerFighter().transform.position,transform.position)>500)
         {
             m_triggerDieing = true;
         }
@@ -37,6 +41,7 @@ public class LiveEntity : Entity {
     IEnumerator RealseEntity()
     {
         yield return new WaitForSeconds(1);
+        
         EntityManager.m_singleton.RealseEntity(m_type, this);
         ParticleSystem vfx = gameObject.GetComponentInChildren<ParticleSystem>();
         if (vfx != null)
@@ -44,6 +49,7 @@ public class LiveEntity : Entity {
             vfx.Stop();
         }
         m_dieing = false;
+
     }
     public override void OnAwake()
     {

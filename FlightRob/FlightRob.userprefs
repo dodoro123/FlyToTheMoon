@@ -1,30 +1,30 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Managers/DynamicLevelManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Entities\Weapon.cs">
     <Files>
-      <File FileName="Assets/Scripts/Managers/AIServiceManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Managers/DynamicLevelManager.cs" Line="30" Column="13" />
-      <File FileName="Assets/Scripts/Graphics/Shaders/Sketch.shader" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Controllers/FRCameraController.cs" Line="11" Column="3" />
-      <File FileName="Assets/Scripts/Controllers/FRCharactorBehaviour.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Controllers/FRCharactorController.cs" Line="97" Column="16" />
-      <File FileName="Assets/Scripts/Entities/Entity.cs" Line="34" Column="15" />
-      <File FileName="Assets/Scripts/Managers/EntityManager.cs" Line="92" Column="34" />
-      <File FileName="Assets/Scripts/Managers/AppManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Managers/LevelComponent.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Managers/Manager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Managers/LevelLoadingManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Entities/PlayerFighter.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Entities/WeaponPlatform.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Entities/Weapon.cs" Line="23" Column="3" />
-      <File FileName="Assets/Scripts/Entities/Bullet.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Entities/Tank.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Controllers/VehicleController.cs" Line="16" Column="1" />
-      <File FileName="Assets/Scripts/Managers/InstantiateManager.cs" Line="24" Column="15" />
-      <File FileName="Assets/Scripts/Controllers/AircraftController.cs" Line="18" Column="1" />
-      <File FileName="Assets/Scripts/Controllers/Controller.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Entities/Fighter.cs" Line="17" Column="20" />
-      <File FileName="Assets/Scripts/Managers/DamageManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Managers\AIServiceManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Managers\DynamicLevelManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Graphics\Shaders\Sketch.shader" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Controllers\FRCameraController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Controllers\FRCharactorBehaviour.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Controllers\FRCharactorController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Entities\Entity.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Managers\EntityManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Managers\AppManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Managers\LevelComponent.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Managers\Manager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Managers\LevelLoadingManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Entities\PlayerFighter.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Entities\WeaponPlatform.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Entities\Weapon.cs" Line="27" Column="39" />
+      <File FileName="Assets\Scripts\Entities\Bullet.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Entities\Tank.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Controllers\VehicleController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Managers\InstantiateManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Controllers\AircraftController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Controllers\Controller.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Entities\Fighter.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Managers\DamageManager.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

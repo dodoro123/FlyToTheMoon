@@ -6,6 +6,7 @@ public enum EntityType
 {
 	Helicopter,
 	Tank,
+    Loots,
 }
 
 
@@ -18,7 +19,8 @@ public class InstantiateManager : Manager<InstantiateManager>
 	{
 		m_entityDic.Add(EntityType.Helicopter,"Entities/Helicopter_Enemy");
 		m_entityDic.Add(EntityType.Tank,"Entities/Tank_Enemy");
-	}
+        m_entityDic.Add(EntityType.Loots, "Entities/Loots");
+    }
 	
 	// Update is called once per frame
 	void Update () 

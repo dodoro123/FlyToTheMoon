@@ -40,10 +40,10 @@ public class DynamicLevelManager : Manager<DynamicLevelManager> {
 	}
 	void OnEnterLevel(LevelComponent _current,LevelComponent _next)
 	{
-		PlayerFighter fighter = EntityManager.m_singleton.GetPlayerFighter();
+		//PlayerFighter fighter = EntityManager.m_singleton.GetPlayerFighter();
 
-		EntityManager.m_singleton.RequestEntity(EntityType.Helicopter,AIServiceManager.m_singleton.GetPredictPlayerPosition(5),Quaternion.Euler(0,-90,0));
-		EntityManager.m_singleton.RequestEntity(EntityType.Tank, AIServiceManager.m_singleton.GetPredictPlayerPosition(5), Quaternion.Euler(0,-90,0));
+		//EntityManager.m_singleton.RequestEntity(EntityType.Helicopter,AIServiceManager.m_singleton.GetPredictPlayerPosition(5),Quaternion.Euler(0,-90,0));
+		//EntityManager.m_singleton.RequestEntity(EntityType.Tank, AIServiceManager.m_singleton.GetPredictPlayerPosition(5), Quaternion.Euler(0,-90,0));
 	}
 
 	void Connect(LevelComponent before,LevelComponent after)

@@ -23,4 +23,10 @@ public class AIServiceManager : Manager<AIServiceManager> {
 
 		return fighter.transform.position + multi * fighter.GetVelocity();
 	}
+    public Vector3 GetPlayerPosition()
+    {
+        PlayerFighter fighter = EntityManager.m_singleton.GetPlayerFighter();
+
+        return fighter.transform.position;
+    }
 }
