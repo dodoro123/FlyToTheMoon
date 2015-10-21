@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 17625e07d20191b47a8baadcbc3bfa49
-timeCreated: 1430072151
+guid: ac1c6fb4b9b6e4e48a2d4d024986c5b8
+timeCreated: 1445447700
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,13 +9,13 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: PRO_Ground_01
+    4300000: PRO_Rock_Stratum_01
     6400000: //RootNode
     9500000: //RootNode
   materials:
     importMaterials: 0
     materialName: 0
-    materialSearch: 2
+    materialSearch: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -55,7 +55,7 @@ ModelImporter:
     splitTangentsAcrossUV: 1
     normalImportMode: 0
     tangentImportMode: 1
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     human: []
@@ -69,7 +69,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   additionalBone: 0
   userData: 
   assetBundleName: 
