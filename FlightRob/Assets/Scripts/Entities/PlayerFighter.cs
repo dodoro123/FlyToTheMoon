@@ -24,7 +24,8 @@ public class PlayerFighter : Entity {
 		Quaternion forward = Quaternion.LookRotation(transform.forward,Vector3.up);
 		m_weapon.transform.rotation=forward;
 		m_weapon.SetupWeapon(this);
-	}
+        //m_weapon.m_homing = true;
+    }
 	
 	// Update is called once per frame
 	void Update () 

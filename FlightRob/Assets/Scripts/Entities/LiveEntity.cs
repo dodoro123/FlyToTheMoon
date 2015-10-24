@@ -3,7 +3,7 @@ using System.Collections;
 
 public class LiveEntity : Entity {
     protected bool m_triggerDieing = false;
-    bool m_dieing = false;
+    public bool m_dieing = false;
     // Use this for initialization
     void Start () {
 	

@@ -8,7 +8,8 @@ public class FRCameraController : MonoBehaviour
 	// Use this for initialization
 	void Start () {
 		m_target = EntityManager.m_singleton.GetPlayerFighter();
-	}
+        AppManager.m_singleton.SetFRCameraController(this);
+    }
 	
 	// Update is called once per frame
 	void LateUpdate () {

@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\Controllers\FRCharactorBehaviour.cs" />
      <Compile Include="Assets\Scripts\Controllers\FRCharactorController.cs" />
      <Compile Include="Assets\Scripts\Controllers\LootsController.cs" />
+     <Compile Include="Assets\Scripts\Controllers\ProjectileController.cs" />
      <Compile Include="Assets\Scripts\Controllers\VehicleController.cs" />
      <Compile Include="Assets\Scripts\Entities\Bullet.cs" />
      <Compile Include="Assets\Scripts\Entities\Entity.cs" />
@@ -75,6 +76,7 @@
      <Compile Include="Assets\Scripts\Managers\SpawningManager.cs" />
      <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EditorLabel.cs" />
      <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EnableCameraDepthInForward.cs" />
+     <Compile Include="Assets\ShaderForge\Example Assets\Scripts\SoftNormalsToVertexColor.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
@@ -136,6 +138,7 @@
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Light.shader" />
      <None Include="Assets\ShaderForge\Editor\InternalResources\Shader Presets\PresetPBR.shader" />
      <None Include="Assets\ShaderForge\Example Assets\Shaders\LightWrapping.shader" />
+     <None Include="Assets\ShaderForge\Editor\InternalResources\Shader Presets\PresetPostEffect.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\CreaseApply.shader" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap Reflective.shader" />

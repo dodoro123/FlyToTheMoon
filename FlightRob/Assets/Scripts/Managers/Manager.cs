@@ -14,7 +14,7 @@ public class Manager<T>:MonoBehaviour  where T :MonoBehaviour
 		}
 		private set{}
 	}
-	void Awake()
+	virtual protected void Awake()
 	{
 		m_singleton = GetComponent<T>();
 	}

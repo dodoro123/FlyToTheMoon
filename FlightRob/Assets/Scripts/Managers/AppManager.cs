@@ -12,9 +12,11 @@ public class AppManager : Manager<AppManager>
 	public DamageManager		m_DamageManager{get; private set;}
     public SpawningManager      m_SpawningManager { get; private set; }
     public LootManager          m_LootManager { get; private set; }
+    FRCameraController          m_CameraController;
 
     // Use this for initializationØ
-    void Awake () {
+    protected override void Awake () {
+        base.Awake();
 		DontDestroyOnLoad(gameObject);
 		m_entityManager = gameObject.AddComponent<EntityManager>();
 		m_instantiateManager = gameObject.AddComponent<InstantiateManager>();
@@ -31,4 +33,12 @@ public class AppManager : Manager<AppManager>
 		if(Application.loadedLevel!=1)
 			Application.LoadLevel(1);
 	}
+    public void SetFRCameraController(FRCameraController _controller)
+    {
+        m_CameraController = _controller;
+    }
+    public FRCameraController GetFRCameraController()
+    {
+        return m_CameraController;
+    }
 }

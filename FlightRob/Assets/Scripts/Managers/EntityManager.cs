@@ -23,7 +23,7 @@ public class EntityManager : Manager<EntityManager>
 	{
 		if(!m_entityList.Contains(entity))
 		{
-			m_entityList.Add(entity);
+			//m_entityList.Add(entity);
 			//if(!m_entityType.Contains(entity.GetType()))
 			//{
 			//	m_entityType.Add(entity.GetType());
@@ -34,12 +34,44 @@ public class EntityManager : Manager<EntityManager>
 	}
 	public void Unregister(Entity entity)
 	{
-		m_entityList.Remove(entity);
+		//m_entityList.Remove(entity);
 	}
 	public PlayerFighter GetPlayerFighter()
 	{
 		return m_fighter;
 	}
+    public Entity GetRandomEnemy(Entity my)
+    {
+        Entity _enemy=null;
+        for(int i=0;i<m_entityList.Count;i++)
+        {
+            if(m_entityList[i]!=my)
+            {
+                _enemy = m_entityList[i];
+            }
+        }
+        return _enemy;
+    }
+
+    public Entity GetRandomEntity(EntityType _type)
+    {
+        List<Entity> list;
+        m_used.TryGetValue(_type, out list);
+        if (list != null&& list.Count>0)
+        {
+            int index = Random.Range(0, list.Count - 1);
+            for (int i = 0; i < list.Count; i++)
+            {
+                LiveEntity live = list[(index + i) % list.Count] as LiveEntity;
+                if (live != null && !live.m_dieing)
+                {
+                    return list[(index + i)%list.Count];
+                }
+            }
+        }
+        return null;
+    }
+
     public int GetEntityNum(EntityType _type)
     {
         List<Entity> list;
@@ -101,6 +133,7 @@ public class EntityManager : Manager<EntityManager>
 		}
         if(callback!=null)
             callback(result);
+        m_entityList.Add(result);
 		return result;
 	}
 	public void RealseEntity(EntityType _type, Entity _entity)
@@ -134,6 +167,7 @@ public class EntityManager : Manager<EntityManager>
 				Debug.LogError("try to lease type:"+_type+":"+ _entity.name + " which have 0 in used");
 			}
 		}
+        m_entityList.Remove(_entity);
 	}
 	void SafeAddTo(Dictionary<EntityType,List<Entity>> _dic,EntityType _type,Entity _entity)
 	{

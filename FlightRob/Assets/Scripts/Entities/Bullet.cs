@@ -2,20 +2,29 @@
 using System.Collections;
 
 public class Bullet : Entity {
-
+    Entity m_target;
+    ProjectileController m_controller;
 	public Entity m_owner{get;private set;}
 	float startTimeStamp;
 	Vector3 initVelocity;
 	// Use this for initialization
+    void Awake()
+    {
+        m_controller = GetComponent<ProjectileController>();
+    }
 	void Start () {
 		startTimeStamp  = Time.time;
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		this.gameObject.transform.position+=(this.gameObject.transform.forward*5);
-		//UnityEditor.EditorApplication.isPaused = true;
-		if((Time.time - startTimeStamp)>1)
+
+        //UnityEditor.EditorApplication.isPaused = true;
+        if ((Time.time - startTimeStamp) > 0.1)
+        {
+            m_controller.SetTarget(m_target);
+        }
+        if ((Time.time - startTimeStamp)>1)
 		{
 			Destroy(gameObject);
 		}
@@ -38,4 +47,8 @@ public class Bullet : Entity {
 		//	audio.Play();
 		
 	}
+    public void SetTarget(Entity _target)
+    {
+        m_target = _target;
+    }
 }
