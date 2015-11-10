@@ -7,6 +7,7 @@ public class DynamicLevelManager : Manager<DynamicLevelManager> {
 	List<LevelComponent> 	m_components = new List<LevelComponent>();
 	LevelComponent			m_current;
 	LevelComponent			m_next;
+    LevelComponent          m_previous;
 	bool connected=false;
 	// Use this for initialization
 	void Start () {
@@ -19,24 +20,45 @@ public class DynamicLevelManager : Manager<DynamicLevelManager> {
 		if(m_components.Count>2)
 		{
 			PlayerFighter fighter = EntityManager.m_singleton.GetPlayerFighter();
+            //enter next block
 			if(m_next.m_bouds.Contains(fighter.transform.position - m_next.transform.position))
 			{
 				LevelComponent candidate=null;
 				for(int i=0;i<m_components.Count;i++)
 				{
-					if(m_components[i]!=m_current&&m_components[i]!=m_next)
+					if(m_components[i]!=m_current&&m_components[i]!=m_next && m_components[i] != m_previous)
 					{
 						candidate = m_components[i];
 						break;
 					}
 				}
+                m_previous = m_current;
 				m_current = m_next;
 				m_next = candidate;
-				Connect(m_current,m_next);
+                ConnectAfter(m_current,m_next);
 				OnEnterLevel(m_current,m_next);
 				//UnityEditor.EditorApplication.isPaused = true;
 			}
-		}
+            //enter previous block
+            if (m_previous&&m_previous.m_bouds.Contains(fighter.transform.position - m_previous.transform.position))
+            {
+                LevelComponent candidate = null;
+                for (int i = 0; i < m_components.Count; i++)
+                {
+                    if (m_components[i] != m_current && m_components[i] != m_next && m_components[i] != m_previous)
+                    {
+                        candidate = m_components[i];
+                        break;
+                    }
+                }
+                m_next = m_current;
+                m_current = m_previous;
+                m_previous = candidate;
+                ConnectBefore(m_current, m_previous);
+                OnEnterLevel(m_current, m_previous);
+                //UnityEditor.EditorApplication.isPaused = true;
+            }
+        }
 	}
 	void OnEnterLevel(LevelComponent _current,LevelComponent _next)
 	{
@@ -46,19 +68,25 @@ public class DynamicLevelManager : Manager<DynamicLevelManager> {
 		//EntityManager.m_singleton.RequestEntity(EntityType.Tank, AIServiceManager.m_singleton.GetPredictPlayerPosition(5), Quaternion.Euler(0,-90,0));
 	}
 
-	void Connect(LevelComponent before,LevelComponent after)
+	void ConnectAfter(LevelComponent current,LevelComponent after)
 	{
-		after.transform.position = before.m_center+new Vector3(before.m_bouds.extents.x+after.m_bouds.extents.x,0,0)-after.m_bouds.center;
-		Debug.DrawLine(before.m_center,after.m_center,Color.black,1);
+		after.transform.position = current.m_center+new Vector3(current.m_bouds.extents.x+after.m_bouds.extents.x,0,0)-after.m_bouds.center;
+		Debug.DrawLine(current.m_center,after.m_center,Color.black,1);
 	}
+    void ConnectBefore(LevelComponent current, LevelComponent before)
+    {
+        before.transform.position = current.m_center - new Vector3(current.m_bouds.extents.x + before.m_bouds.extents.x, 0, 0) - before.m_bouds.center;
+        Debug.DrawLine(current.m_center, before.m_center, Color.black, 1);
+
+    }
 
 
-	
-	public void RegisterLevelComponent(LevelComponent subLevel,bool starter=false)
+    public void RegisterLevelComponent(LevelComponent subLevel,bool starter=false)
 	{
 		if(starter)
 		{
 			m_next = subLevel;
+            m_previous = subLevel;
 		}
 		m_components.Add(subLevel);
 
@@ -70,5 +98,13 @@ public class DynamicLevelManager : Manager<DynamicLevelManager> {
     public Vector3 GetCurrentCenter()
     {
         return m_current.m_bouds.center;
+    }
+    public Vector3 GetForward()
+    {
+        return m_next.m_center - m_current.m_center;
+    }
+    public Vector3 GetBackward()
+    {
+        return m_previous.m_center - m_current.m_center;
     }
 }

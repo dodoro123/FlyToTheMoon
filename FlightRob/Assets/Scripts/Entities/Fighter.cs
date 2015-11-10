@@ -51,7 +51,7 @@ public class Fighter : LiveEntity {
         //fire
         if (Time.frameCount % 10 == 0)
         {
-            //m_weapon.Fire();
+            m_weapon.Fire();
         }
     }
 }

@@ -16,16 +16,22 @@ public class AircraftController : Controller {
     public override void Update ()
     {
         base.Update();
+        Vector3 playerPos = AIServiceManager.m_singleton.GetPlayerPosition();
+        //face to player
+        Vector3 forward = playerPos - transform.position;
+        forward.y = 0;
+        transform.forward = forward;
+
         if (Time.time - m_lastPredict > 2)
         {
             m_lastPredict = Time.time;
             m_desireOffset = new Vector3(Random.Range(-3, 6f), Random.Range(-3, 6f), 0);
         }
         //Vector3 pos = AIServiceManager.m_singleton.GetPredictPlayerPosition();
-        Vector3 pos = AIServiceManager.m_singleton.GetPlayerPosition();
-        pos -= transform.forward*50;
-        pos += m_desireOffset;
-        MoveTo(pos);
+
+        Vector3 Pos = playerPos - transform.forward*50;
+        Pos += m_desireOffset;
+        MoveTo(Pos);
 		
 	}
     public void OnDrawGizmos()
