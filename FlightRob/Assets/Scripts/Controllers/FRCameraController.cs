@@ -4,6 +4,7 @@ using System.Collections;
 public class FRCameraController : MonoBehaviour
 {
 	public Vector3 m_velocity;
+	public Vector3 m_offset= new Vector3(0,0,-45);
 	PlayerFighter m_target;
 	// Use this for initialization
 	void Start () {
@@ -14,7 +15,7 @@ public class FRCameraController : MonoBehaviour
 	// Update is called once per frame
 	void LateUpdate () {
 		//transform.position+=m_moveDir;
-		Follow(m_target.transform.position+new Vector3(0,0,-45)+1.1f*m_target.GetVelocity());
+		Follow(m_target.transform.position+m_offset+1.1f*m_target.GetVelocity());
 	}
 	void Follow(Vector3 pos)
 	{
