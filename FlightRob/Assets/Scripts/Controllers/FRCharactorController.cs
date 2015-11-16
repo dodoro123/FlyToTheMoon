@@ -48,93 +48,104 @@ public class FRCharactorController : Controller {
 	// Update is called once per frame
 	void Update ()
 	{
-		m_behaviour.Update();
-		m_desireVelocity = Vector3.zero;
-        m_enginePower = 5;
-        if (m_behaviour.IsForward())
-		{
-			m_enginePower=10f;
-		}
-		if(m_behaviour.IsBackward())
-		{
-			m_enginePower=2.5f;
-		}
-
-        float pullAngle = m_maxPullangle;
-
-        if (m_cruiseSpeed < m_lostSpeedThreshold && transform.rotation.eulerAngles.x > 30)
+        if (AppManager.m_singleton.IsInPlanet())
         {
-            m_lostSpeed = true;
-            Debug.Log("lost speed");
-        }
-        if(m_cruiseSpeed > 2*m_lostSpeedThreshold&& m_lostSpeed)
-        {
-            m_lostSpeed = false;
-            Debug.Log("get speed");
-        }
-
-        if (m_lostSpeed)
-        {
-            float pitch = transform.forward.y;
-            pitch = Mathf.Lerp(pitch, -1000, 0.002f * Time.deltaTime);
-            transform.forward = new Vector3(transform.forward.x, pitch, transform.forward.z);
-        }
-        else
-        {
-            if (m_behaviour.IsUp() && m_rollDegreeACC == 180)
+            m_behaviour.Update();
+            m_desireVelocity = Vector3.zero;
+            m_enginePower = 5;
+            if (m_behaviour.IsForward())
             {
-                transform.RotateAround(transform.right, pullAngle * Time.deltaTime);
-                //m_desireVelocity += cruiseSpeed*new Vector3(0,1,0);
+                m_enginePower = 10f;
             }
-            else if (m_behaviour.IsDown() && m_rollDegreeACC == 180)
+            if (m_behaviour.IsBackward())
             {
-                transform.RotateAround(transform.right, -1 * pullAngle * Time.deltaTime);
-                //m_desireVelocity += cruiseSpeed*new Vector3(0,-1,0);
+                m_enginePower = 2.5f;
+            }
+
+            float pullAngle = m_maxPullangle;
+
+            if (m_cruiseSpeed < m_lostSpeedThreshold && transform.rotation.eulerAngles.x > 30)
+            {
+                m_lostSpeed = true;
+                Debug.Log("lost speed");
+            }
+            if (m_cruiseSpeed > 2 * m_lostSpeedThreshold && m_lostSpeed)
+            {
+                m_lostSpeed = false;
+                Debug.Log("get speed");
+            }
+
+            if (m_lostSpeed)
+            {
+                float pitch = transform.forward.y;
+                pitch = Mathf.Lerp(pitch, -1000, 0.002f * Time.deltaTime);
+                transform.forward = new Vector3(transform.forward.x, pitch, transform.forward.z);
             }
             else
             {
-                if (transform.up.y < 0 && m_rollDegreeACC == 180)
+                if (m_behaviour.IsUp() && m_rollDegreeACC == 180)
                 {
-                    m_rollDegreeACC = 0;
+                    transform.RotateAround(transform.right, pullAngle * Time.deltaTime);
+                    //m_desireVelocity += cruiseSpeed*new Vector3(0,1,0);
                 }
-                if (m_rollDegreeACC < 180)
+                else if (m_behaviour.IsDown() && m_rollDegreeACC == 180)
                 {
-                    float _rollDegree = Mathf.Lerp(m_rollDegree, 0, m_rollDegreeACC / 180);
-                    if ((m_rollDegreeACC + _rollDegree) > 180)
-                    {
-                        _rollDegree = 180 - m_rollDegreeACC;
-                    }
-                    m_rollDegreeACC += (int)_rollDegree;
-
-                    transform.Rotate(new Vector3(0, 0, _rollDegree));
+                    transform.RotateAround(transform.right, -1 * pullAngle * Time.deltaTime);
+                    //m_desireVelocity += cruiseSpeed*new Vector3(0,-1,0);
                 }
                 else
                 {
-                    m_rollDegreeACC = 180;
-                    float pitch = transform.forward.y;
-                    pitch = Mathf.Lerp(pitch, 0, 0.8f * Time.deltaTime);
-                    transform.forward = new Vector3(transform.forward.x, pitch, transform.forward.z);
+                    if (transform.up.y < 0 && m_rollDegreeACC == 180)
+                    {
+                        m_rollDegreeACC = 0;
+                    }
+                    if (m_rollDegreeACC < 180)
+                    {
+                        float _rollDegree = Mathf.Lerp(m_rollDegree, 0, m_rollDegreeACC / 180);
+                        if ((m_rollDegreeACC + _rollDegree) > 180)
+                        {
+                            _rollDegree = 180 - m_rollDegreeACC;
+                        }
+                        m_rollDegreeACC += (int)_rollDegree;
+
+                        transform.Rotate(new Vector3(0, 0, _rollDegree));
+                    }
+                    else
+                    {
+                        m_rollDegreeACC = 180;
+                        float pitch = transform.forward.y;
+                        pitch = Mathf.Lerp(pitch, 0, 0.8f * Time.deltaTime);
+                        transform.forward = new Vector3(transform.forward.x, pitch, transform.forward.z);
+                    }
                 }
             }
+
+
+
+
+            float _flyPower = Mathf.Lerp(1, 0.3f, (transform.position.y - m_bottomY) / 100) * m_flyPower;
+
+            //Debug.Log("_flyPower" + _flyPower);
+
+            //Debug.Log(transform.forward+"-"+transform.up);
+            m_velocity += (m_enginePower * transform.forward - m_forwardVel * m_airFraction - (m_velocity - m_forwardVel) * m_airFraction2 + m_cruiseSpeed * _flyPower * transform.up + m_gravity * Vector3.down) * Time.deltaTime;
+
+            m_cruiseSpeed = Vector3.Dot(m_velocity, transform.forward);
+            m_forwardVel = transform.forward * m_cruiseSpeed;
+            //if(!OutOfCamera(transform.position+m_desireVelocity*Time.deltaTime))
+            {
+                transform.position += m_velocity * Time.deltaTime;
+            }
         }
+        if(AppManager.m_singleton.IsInUniverse())
+        {
+            //universe controller
+            m_behaviour.IsForward();
+            m_behaviour.IsBackward();
+            m_behaviour.IsUp();
+            m_behaviour.IsDown();
 
-        
-
-
-        float _flyPower = Mathf.Lerp(1, 0.3f, (transform.position.y - m_bottomY)/100) * m_flyPower;
-
-        //Debug.Log("_flyPower" + _flyPower);
-
-        //Debug.Log(transform.forward+"-"+transform.up);
-        m_velocity += (m_enginePower*transform.forward - m_forwardVel*m_airFraction -(m_velocity-m_forwardVel)*m_airFraction2 +m_cruiseSpeed*_flyPower*transform.up+m_gravity*Vector3.down)*Time.deltaTime;
-
-		m_cruiseSpeed = Vector3.Dot(m_velocity,transform.forward);
-		m_forwardVel = transform.forward*m_cruiseSpeed;
-		//if(!OutOfCamera(transform.position+m_desireVelocity*Time.deltaTime))
-		{
-			transform.position+=m_velocity*Time.deltaTime;
-		}
-
+        }
 	}
 
 	bool OutOfCamera(Vector3 point)

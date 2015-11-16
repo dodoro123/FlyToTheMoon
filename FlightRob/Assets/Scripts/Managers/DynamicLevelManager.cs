@@ -9,6 +9,8 @@ public class DynamicLevelManager : Manager<DynamicLevelManager> {
 	LevelComponent			m_next;
     LevelComponent          m_previous;
 	bool connected=false;
+    Vector3                 m_lastPlayerPosition;
+    bool                    m_contained;
 	// Use this for initialization
 	void Start () {
 
@@ -58,9 +60,31 @@ public class DynamicLevelManager : Manager<DynamicLevelManager> {
                 OnEnterLevel(m_current, m_previous);
                 //UnityEditor.EditorApplication.isPaused = true;
             }
+
+            if (m_current.m_bouds.Contains(fighter.transform.position - m_current.transform.position))
+            {
+                m_contained = true;
+            }
+            else
+            {
+                if (m_contained && fighter.transform.position.y > m_lastPlayerPosition.y)
+                {
+                    OnFlyToTheMoon(); 
+                    Debug.Log("fly to the moon!!!!!!!!!!!!!!!");
+                }
+                m_contained = false;
+            }
+
+            m_lastPlayerPosition = fighter.transform.position;
+            Debug.Log("contained:"+m_contained);
         }
 	}
-	void OnEnterLevel(LevelComponent _current,LevelComponent _next)
+    void OnFlyToTheMoon()
+    {
+        //load university 
+        LevelLoadingManager.m_singleton.LoadLevel(2);
+    }
+    void OnEnterLevel(LevelComponent _current,LevelComponent _next)
 	{
 		//PlayerFighter fighter = EntityManager.m_singleton.GetPlayerFighter();
 

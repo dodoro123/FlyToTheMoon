@@ -33,7 +33,7 @@ public class Weapon : Entity {
 	public void Fire()
 	{
 		Quaternion forward = Quaternion.LookRotation(transform.forward,Vector3.up);
-        Quaternion random = Quaternion.EulerAngles(Random.Range(-0.05f, 0.05f), 0, 0);
+        Quaternion random = Quaternion.EulerAngles(Random.Range(-0.05f, 0.05f), Random.Range(-0.05f, 0.05f), 0);
         GameObject bullet = (GameObject)GameObject.Instantiate(Resources.Load("Entities/Bullet"),transform.position+2*transform.forward,forward* random);
 		Bullet bulletCom = bullet.GetComponent<Bullet>();
 		bulletCom.Init(m_owner);

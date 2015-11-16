@@ -14,6 +14,9 @@ public class SpawningManager : Manager<SpawningManager> {
     // Update is called once per frame
     void Update()
     {
+        //do nothing in universe
+        if (AppManager.m_singleton.IsInUniverse())
+            return;
         if((Time.time - m_lastSpawnTimeStamp) > SPAWNCOOLDOWN)
         {
             //hellcopter
